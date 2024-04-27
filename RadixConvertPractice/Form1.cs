@@ -120,7 +120,7 @@ namespace RadixConvertPractice {
                     } break;
                 case "Hexadecimal - 16":
                     try {
-                        answerLabel.Text = Convert.ToString(Convert.ToInt32(genTextbox.Text, fromBase), 16);
+                        answerLabel.Text = Convert.ToString(Convert.ToInt32(genTextbox.Text, fromBase), 16).ToUpper();
                     } catch (Exception) {
                         MessageBox.Show("error while converting base of generated number.");
                     } break;
@@ -131,11 +131,6 @@ namespace RadixConvertPractice {
             timer1.Enabled = true;
         }
 
-        //if (genTextbox.Text.Contains("A")) answerLabel.Text = Convert.ToString(Convert.ToInt32(genTextbox.Text, 16), 2);
-        //else if (genTextbox.Text.Contains("9")) answerLabel.Text = Convert.ToString(Convert.ToInt32(genTextbox.Text, 10), 2);
-        //else if (genTextbox.Text.Contains("7")) answerLabel.Text = Convert.ToString(Convert.ToInt32(genTextbox.Text, 8), 2);
-        //else answerLabel.Text = genTextbox.Text;
-
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
 
@@ -144,7 +139,7 @@ namespace RadixConvertPractice {
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         public static extern bool ReleaseCapture();
 
-        private void Form1_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e) {
+        private void FormMove(object sender, MouseEventArgs e) {
             if (e.Button == MouseButtons.Left) {
                 this.Cursor = Cursors.SizeAll;
                 ReleaseCapture();
@@ -153,13 +148,41 @@ namespace RadixConvertPractice {
             }
         }
 
-        private void label4_MouseDown(object sender, MouseEventArgs e) {
-            if (e.Button == MouseButtons.Left) {
-                this.Cursor = Cursors.SizeAll;
-                ReleaseCapture();
-                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
-                this.Cursor = Cursors.Arrow;
-            }
+        private void answerLabel_Click(object sender, EventArgs e) {
+            Clipboard.SetText(answerLabel.Text);
+            MessageBox.Show("answer copied!");
+        }
+
+        private void label1_Click(object sender, EventArgs e) {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e) {
+
+        }
+
+        private void lenTxb_TextChanged(object sender, EventArgs e) {
+
+        }
+
+        private void genTextbox_TextChanged(object sender, EventArgs e) {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e) {
+
+        }
+
+        private void answerBase_SelectedIndexChanged(object sender, EventArgs e) {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e) {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e) {
+
         }
     }
 }

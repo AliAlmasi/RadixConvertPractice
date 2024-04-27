@@ -9,11 +9,10 @@ namespace RadixConvertPractice {
         private static Mutex mutex = null;
         [STAThread]
         static void Main() {
-            const string appName = "RadixConvertPractice";
             bool createdNew;
-            mutex = new Mutex(true, appName, out createdNew);
+            mutex = new Mutex(true, Application.ProductName, out createdNew);
             if (!createdNew) {
-                MessageBox.Show("Only one instance of this app is allowed.", appName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Only one instance of this app is allowed.", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             Application.EnableVisualStyles();
