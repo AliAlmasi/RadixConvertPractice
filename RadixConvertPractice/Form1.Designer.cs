@@ -39,6 +39,7 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
@@ -49,13 +50,14 @@
             this.button1.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Marlett", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            this.button1.Location = new System.Drawing.Point(292, 10);
+            this.button1.Font = new System.Drawing.Font("Arial Black", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(288, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(35, 26);
+            this.button1.Size = new System.Drawing.Size(39, 40);
             this.button1.TabIndex = 0;
             this.button1.TabStop = false;
-            this.button1.Text = "r";
+            this.button1.Text = "X";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -84,13 +86,13 @@
             this.label1.Size = new System.Drawing.Size(155, 17);
             this.label1.TabIndex = 2;
             this.label1.Text = "Select a number base:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             this.label1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FormMove);
             // 
             // answerButton
             // 
             this.answerButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.answerButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
+            this.answerButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.answerButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.answerButton.Font = new System.Drawing.Font("Arial", 11.25F);
             this.answerButton.Location = new System.Drawing.Point(28, 283);
@@ -110,7 +112,6 @@
             this.label2.Size = new System.Drawing.Size(144, 17);
             this.label2.TabIndex = 5;
             this.label2.Text = "Enter number length:";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             this.label2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FormMove);
             // 
             // lenTxb
@@ -120,12 +121,12 @@
             this.lenTxb.Name = "lenTxb";
             this.lenTxb.Size = new System.Drawing.Size(130, 25);
             this.lenTxb.TabIndex = 6;
-            this.lenTxb.TextChanged += new System.EventHandler(this.lenTxb_TextChanged);
             // 
             // genTextbox
             // 
             this.genTextbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.genTextbox.Font = new System.Drawing.Font("Arial", 11.25F);
+            this.genTextbox.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.genTextbox.Location = new System.Drawing.Point(27, 203);
             this.genTextbox.Name = "genTextbox";
             this.genTextbox.Size = new System.Drawing.Size(288, 25);
@@ -133,7 +134,6 @@
             this.genTextbox.TabStop = false;
             this.genTextbox.Text = "See generated number here";
             this.genTextbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.genTextbox.TextChanged += new System.EventHandler(this.genTextbox_TextChanged);
             // 
             // answerLabel
             // 
@@ -155,6 +155,7 @@
             // 
             this.genButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.genButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
+            this.genButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.genButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.genButton.Font = new System.Drawing.Font("Arial", 11.25F);
             this.genButton.Location = new System.Drawing.Point(28, 167);
@@ -174,7 +175,7 @@
             this.label3.Size = new System.Drawing.Size(141, 17);
             this.label3.TabIndex = 11;
             this.label3.Text = "Select answer base:";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
+            this.label3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FormMove);
             // 
             // answerBase
             // 
@@ -190,7 +191,6 @@
             this.answerBase.Name = "answerBase";
             this.answerBase.Size = new System.Drawing.Size(129, 25);
             this.answerBase.TabIndex = 10;
-            this.answerBase.SelectedIndexChanged += new System.EventHandler(this.answerBase_SelectedIndexChanged);
             // 
             // timer1
             // 
@@ -206,27 +206,39 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(367, 55);
             this.label4.TabIndex = 12;
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             this.label4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FormMove);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Black;
-            this.label5.Font = new System.Drawing.Font("Arial Black", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Arial Black", 13F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.label5.Location = new System.Drawing.Point(13, 10);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(242, 27);
+            this.label5.Size = new System.Drawing.Size(229, 26);
             this.label5.TabIndex = 13;
             this.label5.Text = "RadixConvertPractice";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             this.label5.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FormMove);
+            // 
+            // label6
+            // 
+            this.label6.BackColor = System.Drawing.Color.Black;
+            this.label6.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label6.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(246, 12);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(36, 23);
+            this.label6.TabIndex = 14;
+            this.label6.Text = "v0.0";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(340, 380);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.answerBase);
@@ -274,6 +286,7 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
     }
 }
 
