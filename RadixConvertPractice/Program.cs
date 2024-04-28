@@ -14,12 +14,17 @@ namespace RadixConvertPractice {
             bool createdNew;
             mutex = new Mutex(true, Application.ProductName, out createdNew);
             if (!createdNew) {
-                MessageBox.Show("Only one instance of this app is allowed.", msgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                showError("Only one instance of this app is allowed.");
                 return;
             }
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
+        }
+
+        public static void showError(string errorText = "Runtime error!\nInform the developer by creating an issue on GitHub.", bool issues = false) {
+            MessageBox.Show(errorText, msgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            if (issues) System.Diagnostics.Process.Start("https://github.com/alialmasi/radixconvertpractice/issues");
         }
 
         public static string generateBinary(int length = 0) {
@@ -35,11 +40,11 @@ namespace RadixConvertPractice {
                     for (int i = 0; i < x.Length; i++) output += x[i].ToString();
                     return output.TrimStart('0');
                 } catch (Exception ex) {
-                    MessageBox.Show("error when generating binary number:\n\n" + ex.Message, msgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    showError("error when generating binary number:\n\n" + ex.Message);
                     return "error";
                 }
             } else {
-                MessageBox.Show("please enter a valid number length.", msgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                showError("please enter a valid number length.");
                 return "error";
             }
         }
@@ -57,11 +62,11 @@ namespace RadixConvertPractice {
                     for (int i = 0; i < x.Length; i++) output += x[i].ToString();
                     return output.TrimStart('0');
                 } catch (Exception ex) {
-                    MessageBox.Show("error when generating octal number:\n\n" + ex.Message, msgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    showError("error when generating octal number:\n\n" + ex.Message);
                     return "error";
                 }
             } else {
-                MessageBox.Show("please enter a valid number length.", msgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                showError("please enter a valid number length.");
                 return "error";
             }
         }
@@ -79,11 +84,11 @@ namespace RadixConvertPractice {
                     for (int i = 0; i < x.Length; i++) output += x[i].ToString();
                     return output.TrimStart('0');
                 } catch (Exception ex) {
-                    MessageBox.Show("error when generating decimal number:\n\n" + ex.Message, msgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    showError("error when generating decimal number:\n\n" + ex.Message);
                     return "error";
                 }
             } else {
-                MessageBox.Show("please enter a valid number length.", msgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                showError("please enter a valid number length.");
                 return "error";
             }
         }
@@ -97,13 +102,13 @@ namespace RadixConvertPractice {
                     string result = String.Concat(buffer.Select(x => x.ToString("X2")).ToArray());
                     if (length % 2 == 0)
                         return result;
-                    return result + r.Next(16).ToString("X");
+                    return result + r.Next(16).ToString("X").TrimStart('0');
                 } catch (Exception ex) {
-                    MessageBox.Show("error when generating hexadecimal number:\n\n" + ex.Message, msgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    showError("error when generating hexadecimal number:\n\n" + ex.Message);
                     return "error";
                 }
             } else {
-                MessageBox.Show("please enter a valid number length.", msgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                showError("please enter a valid number length.");
                 return "error";
             }
         }

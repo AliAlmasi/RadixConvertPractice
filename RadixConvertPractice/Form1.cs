@@ -11,6 +11,7 @@ using RadixConvertPractice.Properties;
 
 namespace RadixConvertPractice {
     public partial class Form1: Form {
+        public static bool hasFirstGenerated = false; // checks if anything has beem generated from the time program started.
         public Form1() {
             InitializeComponent();
         }
@@ -20,6 +21,7 @@ namespace RadixConvertPractice {
         }
 
         private void Form1_Load(object sender, EventArgs e) {
+            this.Text = Program.msgTitle;
             baseList.SelectedIndex = Settings.Default.selectedBase;
             answerBase.SelectedIndex = 2;
             lenTxb.Text = Settings.Default.enteredLength.ToString();
@@ -27,9 +29,10 @@ namespace RadixConvertPractice {
         }
 
         private void genButton_Click(object sender, EventArgs e) {
+            hasFirstGenerated = true;
             string selected = baseList.SelectedItem.ToString();
             if (selected == "") {
-                MessageBox.Show("no number base selected", Program.msgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Program.showError("no number base selected");
             } else {
                 int len = 0;
                 try {
@@ -37,7 +40,7 @@ namespace RadixConvertPractice {
                     Settings.Default.enteredLength = len;
                     Settings.Default.Save();
                 } catch (Exception ex) {
-                    MessageBox.Show("please enter a valid number length.\n\n" + ex.Message, Program.msgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Program.showError("please enter a valid number length.\n\n" + ex.Message);
                 }
                 switch (selected) {
                     case "Binary - 2":
@@ -57,7 +60,7 @@ namespace RadixConvertPractice {
                         genTextbox.Text = hexGen;
                         break;
                     default:
-                        MessageBox.Show("no number base selected", Program.msgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Program.showError("no number base selected");
                         break;
                 }
             }
@@ -75,61 +78,67 @@ namespace RadixConvertPractice {
         }
 
         private void answerButton_Click(object sender, EventArgs e) {
-            if (timer1.Enabled) {
-                timer1.Stop();
-                timer1.Start();
-            }
-            string selectedAnswerBase = answerBase.SelectedItem.ToString();
-            int fromBase = 0;
-            switch (baseList.SelectedIndex) {
-                case 0:
-                    fromBase = 2;
-                    break;
-                case 1:
-                    fromBase = 8;
-                    break;
-                case 2:
-                    fromBase = 10;
-                    break;
-                case 3:
-                    fromBase = 16;
-                    break;
-                default:
-                    MessageBox.Show("couldn't figure out the generated number base", Program.msgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    break;
-            }
-            answerLabel.Visible = true;
-            switch (selectedAnswerBase) {
-                case "Binary - 2":
-                    try {
-                        answerLabel.Text = Convert.ToString(Convert.ToInt32(genTextbox.Text, fromBase), 2);
-                    } catch (Exception) {
-                        MessageBox.Show("error while converting base of generated number.", Program.msgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    break;
-                case "Octal - 8":
-                    try {
-                        answerLabel.Text = Convert.ToString(Convert.ToInt32(genTextbox.Text, fromBase), 8);
-                    } catch (Exception) {
-                        MessageBox.Show("error while converting base of generated number.", Program.msgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    } break;
-                case "Decimal - 10":
-                    try {
-                        answerLabel.Text = Convert.ToString(Convert.ToInt32(genTextbox.Text, fromBase), 10);
-                    } catch (Exception) {
-                        MessageBox.Show("error while converting base of generated number.", Program.msgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    } break;
-                case "Hexadecimal - 16":
-                    try {
-                        answerLabel.Text = Convert.ToString(Convert.ToInt32(genTextbox.Text, fromBase), 16).ToUpper();
-                    } catch (Exception) {
-                        MessageBox.Show("error while converting base of generated number.", Program.msgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    } break;
-                default:
-                    MessageBox.Show("error while converting base of generated number.", Program.msgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    break;
-            }
-            timer1.Enabled = true;
+            if (hasFirstGenerated) {
+                if (genTextbox.Text == "error") {
+                    Program.showError("generate a number first.");
+                    return;
+                }
+                if (timer1.Enabled) {
+                    timer1.Stop();
+                    timer1.Start();
+                }
+                string selectedAnswerBase = answerBase.SelectedItem.ToString();
+                int fromBase = 0;
+                switch (baseList.SelectedIndex) {
+                    case 0:
+                        fromBase = 2;
+                        break;
+                    case 1:
+                        fromBase = 8;
+                        break;
+                    case 2:
+                        fromBase = 10;
+                        break;
+                    case 3:
+                        fromBase = 16;
+                        break;
+                    default:
+                        Program.showError("couldn't figure out the generated number base");
+                        break;
+                }
+                answerLabel.Visible = true;
+                switch (selectedAnswerBase) {
+                    case "Binary - 2":
+                        try {
+                            answerLabel.Text = Convert.ToString(Convert.ToInt32(genTextbox.Text, fromBase), 2);
+                        } catch (Exception) {
+                            Program.showError("error while converting base of generated number.");
+                        }
+                        break;
+                    case "Octal - 8":
+                        try {
+                            answerLabel.Text = Convert.ToString(Convert.ToInt32(genTextbox.Text, fromBase), 8);
+                        } catch (Exception) {
+                            Program.showError("error while converting base of generated number.");
+                        } break;
+                    case "Decimal - 10":
+                        try {
+                            answerLabel.Text = Convert.ToString(Convert.ToInt32(genTextbox.Text, fromBase), 10);
+                        } catch (Exception) {
+                            Program.showError("error while converting base of generated number.");
+                        } break;
+                    case "Hexadecimal - 16":
+                        try {
+                            answerLabel.Text = Convert.ToString(Convert.ToInt32(genTextbox.Text, fromBase), 16).ToUpper();
+                        } catch (Exception) {
+                            Program.showError("error while converting base of generated number.");
+                        } break;
+                    default:
+                        Program.showError("error while converting base of generated number.");
+                        break;
+                }
+                timer1.Enabled = true;
+            } else Program.showError("generate a number first.");
         }
 
         public const int WM_NCLBUTTONDOWN = 0xA1;
@@ -150,12 +159,14 @@ namespace RadixConvertPractice {
         }
 
         private void answerLabel_Click(object sender, EventArgs e) {
-            Clipboard.SetText(answerLabel.Text);
-            MessageBox.Show("answer copied!", Program.msgTitle);
+            if (hasFirstGenerated) {
+                Clipboard.SetText(answerLabel.Text);
+                Program.showError("answer copied!");
+            } else Program.showError("nothing to copy. generate a number first.");
         }
 
         private void label6_Click(object sender, EventArgs e) {
-            if (MessageBox.Show("This is version "+Program.appVersion+".\nDo you want to check for newer versions?", Program.msgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes) {
+            if (MessageBox.Show("This is version "+Program.appVersion+"\nDo you want to check for newer versions?", Program.msgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes) {
                 System.Diagnostics.Process.Start("https://github.com/alialmasi/radixconvertpractice/releases/latest/");
             }
         }

@@ -63,17 +63,19 @@
             // 
             // baseList
             // 
+            this.baseList.BackColor = System.Drawing.SystemColors.WindowText;
             this.baseList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.baseList.Font = new System.Drawing.Font("Arial", 11.25F);
+            this.baseList.ForeColor = System.Drawing.SystemColors.Window;
             this.baseList.FormattingEnabled = true;
             this.baseList.Items.AddRange(new object[] {
             "Binary - 2",
             "Octal - 8",
             "Decimal - 10",
             "Hexadecimal - 16"});
-            this.baseList.Location = new System.Drawing.Point(185, 65);
+            this.baseList.Location = new System.Drawing.Point(174, 65);
             this.baseList.Name = "baseList";
-            this.baseList.Size = new System.Drawing.Size(130, 25);
+            this.baseList.Size = new System.Drawing.Size(141, 25);
             this.baseList.TabIndex = 1;
             this.baseList.SelectedIndexChanged += new System.EventHandler(this.comboBox_SelectedIndexChanged);
             // 
@@ -83,16 +85,16 @@
             this.label1.Font = new System.Drawing.Font("Arial", 11.25F);
             this.label1.Location = new System.Drawing.Point(25, 68);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(155, 17);
+            this.label1.Size = new System.Drawing.Size(143, 17);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Select a number base:";
+            this.label1.Text = "Select number base:";
             this.label1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FormMove);
             // 
             // answerButton
             // 
             this.answerButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.answerButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
-            this.answerButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.answerButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
             this.answerButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.answerButton.Font = new System.Drawing.Font("Arial", 11.25F);
             this.answerButton.Location = new System.Drawing.Point(28, 283);
@@ -107,7 +109,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial", 11.25F);
-            this.label2.Location = new System.Drawing.Point(36, 118);
+            this.label2.Location = new System.Drawing.Point(25, 118);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(144, 17);
             this.label2.TabIndex = 5;
@@ -116,16 +118,20 @@
             // 
             // lenTxb
             // 
+            this.lenTxb.BackColor = System.Drawing.SystemColors.WindowText;
             this.lenTxb.Font = new System.Drawing.Font("Arial", 11.25F);
-            this.lenTxb.Location = new System.Drawing.Point(185, 115);
+            this.lenTxb.ForeColor = System.Drawing.SystemColors.Window;
+            this.lenTxb.Location = new System.Drawing.Point(174, 115);
             this.lenTxb.Name = "lenTxb";
-            this.lenTxb.Size = new System.Drawing.Size(130, 25);
+            this.lenTxb.Size = new System.Drawing.Size(141, 25);
             this.lenTxb.TabIndex = 6;
             // 
             // genTextbox
             // 
+            this.genTextbox.BackColor = System.Drawing.Color.Black;
             this.genTextbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.genTextbox.Font = new System.Drawing.Font("Arial", 11.25F);
+            this.genTextbox.ForeColor = System.Drawing.SystemColors.Window;
             this.genTextbox.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.genTextbox.Location = new System.Drawing.Point(27, 203);
             this.genTextbox.Name = "genTextbox";
@@ -155,7 +161,7 @@
             // 
             this.genButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.genButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
-            this.genButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.genButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
             this.genButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.genButton.Font = new System.Drawing.Font("Arial", 11.25F);
             this.genButton.Location = new System.Drawing.Point(28, 167);
@@ -170,7 +176,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial", 11.25F);
-            this.label3.Location = new System.Drawing.Point(39, 253);
+            this.label3.Location = new System.Drawing.Point(25, 253);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(141, 17);
             this.label3.TabIndex = 11;
@@ -179,17 +185,19 @@
             // 
             // answerBase
             // 
+            this.answerBase.BackColor = System.Drawing.SystemColors.WindowText;
             this.answerBase.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.answerBase.Font = new System.Drawing.Font("Arial", 11.25F);
+            this.answerBase.ForeColor = System.Drawing.SystemColors.Window;
             this.answerBase.FormattingEnabled = true;
             this.answerBase.Items.AddRange(new object[] {
             "Binary - 2",
             "Octal - 8",
             "Decimal - 10",
             "Hexadecimal - 16"});
-            this.answerBase.Location = new System.Drawing.Point(186, 250);
+            this.answerBase.Location = new System.Drawing.Point(174, 250);
             this.answerBase.Name = "answerBase";
-            this.answerBase.Size = new System.Drawing.Size(129, 25);
+            this.answerBase.Size = new System.Drawing.Size(141, 25);
             this.answerBase.TabIndex = 10;
             // 
             // timer1
