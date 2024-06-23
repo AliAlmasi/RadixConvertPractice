@@ -22,6 +22,7 @@ namespace RadixConvertPractice {
             Application.SetCompatibleTextRenderingDefault(false);
             if (Properties.Settings.Default.firstRun) {
                 string firstRunMsg = "Hello. Thank you for using RadixConvertPractice. We hope that this software will be useful for you in the practice of converting classical bases of numbers.\n\nThis is a free and open source software. You can read the source code of this software and be sure of its security.\n\nAlso, if you encounter a problem while using this software, be sure to inform the developer (by submitting an issue on GitHub) so that it can be fixed in the next versions of this software.";
+                System.Diagnostics.Process.Start("https://al1almasi.ir/RadixConvertPractice");
                 MessageBox.Show(firstRunMsg, msgTitle);
                 Properties.Settings.Default.firstRun = false;
                 Properties.Settings.Default.Save();
@@ -45,7 +46,7 @@ namespace RadixConvertPractice {
                             x[i] = r.Next(0, 2);
                         }
                     for (int i = 0; i < x.Length; i++) output += x[i].ToString();
-                    return output.TrimStart('0');
+                    return output;
                 } catch (Exception ex) {
                     showError("error when generating binary number:\n\n" + ex.Message);
                     return "error";
@@ -67,7 +68,7 @@ namespace RadixConvertPractice {
                             x[i] = r.Next(0, 8);
                         }
                     for (int i = 0; i < x.Length; i++) output += x[i].ToString();
-                    return output.TrimStart('0');
+                    return output;
                 } catch (Exception ex) {
                     showError("error when generating octal number:\n\n" + ex.Message);
                     return "error";
@@ -89,7 +90,7 @@ namespace RadixConvertPractice {
                             x[i] = r.Next(0, 10);
                         }
                     for (int i = 0; i < x.Length; i++) output += x[i].ToString();
-                    return output.TrimStart('0');
+                    return output;
                 } catch (Exception ex) {
                     showError("error when generating decimal number:\n\n" + ex.Message);
                     return "error";
@@ -109,7 +110,7 @@ namespace RadixConvertPractice {
                     string result = String.Concat(buffer.Select(x => x.ToString("X2")).ToArray());
                     if (length % 2 == 0)
                         return result;
-                    return result + r.Next(16).ToString("X").TrimStart('0');
+                    return result + r.Next(16).ToString("X");
                 } catch (Exception ex) {
                     showError("error when generating hexadecimal number:\n\n" + ex.Message);
                     return "error";

@@ -26,10 +26,12 @@ namespace RadixConvertPractice {
             answerBase.SelectedIndex = 2;
             lenTxb.Text = Settings.Default.enteredLength.ToString();
             label6.Text = "v" + Program.appVersion;
-            ToolTip history_tp = new ToolTip();
-            history_tp.SetToolTip(this.button2, this.button2.Tag.ToString());
-            ToolTip exit_tp = new ToolTip();
-            exit_tp.SetToolTip(this.button1, this.button1.Tag.ToString());
+            ToolTip tp = new ToolTip();
+            tp.SetToolTip(this.button2, this.button2.Tag.ToString());
+            tp.SetToolTip(this.button1, this.button1.Tag.ToString());
+            tp.SetToolTip(this.label5, "Developed by Ali Almasi");
+            tp.SetToolTip(this.genTextbox, "You can manually enter any number.");
+            tp.SetToolTip(this.answerLabel, "Click to copy");
         }
 
         private void genButton_Click(object sender, EventArgs e) {
@@ -157,9 +159,11 @@ namespace RadixConvertPractice {
         private void FormMove(object sender, MouseEventArgs e) {
             if (e.Button == MouseButtons.Left) {
                 this.Cursor = Cursors.SizeAll;
+                this.Opacity = 0.7;
                 ReleaseCapture();
                 SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
                 this.Cursor = Cursors.Arrow;
+                this.Opacity = 1;
             }
         }
 

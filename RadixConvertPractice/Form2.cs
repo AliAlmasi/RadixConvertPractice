@@ -53,5 +53,10 @@ namespace RadixConvertPractice {
                 }
             }
         }
+
+        private void button4_Click(object sender, EventArgs e) {
+            Clipboard.SetText(textBox1.Text);
+            MessageBox.Show("All history was copied.", Program.msgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
 }
