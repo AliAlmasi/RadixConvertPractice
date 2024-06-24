@@ -16,6 +16,17 @@ It is a portable program (doesn't need to be installed) and it only needs [*dotn
 [Link to git repository](https://github.com/alialmasi/radixconvertpractice.git)
 
 ## Screenshots
-|  ![Main window's screenshot](./screenshots/1.jpg)  |  ![History window's screenshot](./screenshots/2.jpg) |
-|:------:|:------:|
-| Main window's screenshot | History window's screenshot |
+<table>
+  <thead>
+    <tr>
+      <th>Main window's screenshot</th>
+      <th>History window's screenshot</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><img src="./screenshots/1.jpg"></td>
+      <td><img src="./screenshots/2.jpg"></td>
+    </tr>
+  </tbody>
+</table>
