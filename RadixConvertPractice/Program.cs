@@ -21,8 +21,7 @@ namespace RadixConvertPractice {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             if (Properties.Settings.Default.firstRun) {
-                string firstRunMsg = "Hello. Thank you for using RadixConvertPractice. We hope that this software will be useful for you in the practice of converting classical bases of numbers.\n\nThis is a free and open source software. You can read the source code of this software and be sure of its security.\n\nAlso, if you encounter a problem while using this software, be sure to inform the developer (by submitting an issue on GitHub) so that it can be fixed in the next versions of this software.";
-                System.Diagnostics.Process.Start("https://al1almasi.ir/RadixConvertPractice");
+                string firstRunMsg = "Hello. Thank you for using RadixConvertPractice. We hope that this software will be useful for you in the practice of converting classical bases of numbers.\n\nThis is a free and open source software. You can read the source code of this software and be sure of its security and integrity.\n\nAlso, if you encounter a problem while using this software, be sure to inform the developer (by submitting an issue on GitHub) so that it can be fixed in the next versions of this software.";
                 MessageBox.Show(firstRunMsg, msgTitle);
                 Properties.Settings.Default.firstRun = false;
                 Properties.Settings.Default.Save();
