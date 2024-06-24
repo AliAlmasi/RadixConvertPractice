@@ -19,14 +19,14 @@ It is a portable program (doesn't need to be installed) and it only needs [*dotn
 <table>
   <thead>
     <tr>
-      <th>Main window's screenshot</td>
-      <th>History window's screenshot</td>
+      <th>Main window's screenshot</th>
+      <th>History window's screenshot</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td><img src="./screenshots/1.jpg"></th>
-      <td><img src="./screenshots/2.jpg"></th>
+      <td><img src="./screenshots/1.jpg"></td>
+      <td><img src="./screenshots/2.jpg"></td>
     </tr>
   </tbody>
 </table>
