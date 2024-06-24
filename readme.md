@@ -17,5 +17,5 @@ It is a portable program (doesn't need to be installed) and it only needs [*dotn
 
 ## Screenshots
 |  ![Main window's screenshot](./screenshots/1.jpg)  |  ![History window's screenshot](./screenshots/2.jpg) |
-|:------:|:------:|
+|------|------|
 | Main window's screenshot | History window's screenshot |
