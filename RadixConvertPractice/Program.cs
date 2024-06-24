@@ -31,7 +31,15 @@ namespace RadixConvertPractice {
 
         public static void showError(string errorText = "Runtime error!\nInform the developer by creating an issue on GitHub.", bool issues = false) {
             MessageBox.Show(errorText, msgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            if (issues) System.Diagnostics.Process.Start("https://github.com/alialmasi/radixconvertpractice/issues");
+            if (issues) {
+                if (MessageBox.Show("Do you want to create an issue on GitHub?\n\nThis will help the developer to fix the bug.", msgTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
+                    System.Diagnostics.Process.Start("https://github.com/alialmasi/radixconvertpractice/issues/new");
+                }
+            }
+        }
+
+        public static void showMsg(string msgText = "Done") {
+            MessageBox.Show(msgText, msgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         public static string generateBinary(int length = 0) {

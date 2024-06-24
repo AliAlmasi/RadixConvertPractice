@@ -27,36 +27,48 @@ namespace RadixConvertPractice {
         private void button2_Click(object sender, EventArgs e) {
             textBox1.Clear();
             history = "";
-            MessageBox.Show("History is cleared", Program.msgTitle);
+            Program.showMsg("History is cleared.");
         }
 
         private void button1_Click(object sender, EventArgs e) {
-            SaveFileDialog savefile = new SaveFileDialog {
-                InitialDirectory = Path.Combine(Path.GetDirectoryName(Environment.GetFolderPath(Environment.SpecialFolder.Personal)), "Documents"),
-                Title = "Save history as text file - " + Program.msgTitle,
-                CheckFileExists = false,
-                CheckPathExists = true,
-                DefaultExt = "txt",
-                Filter = "Text file|*.txt",
-                FilterIndex = 1,
-                RestoreDirectory = true
-            };
-            if (savefile.ShowDialog() == DialogResult.OK) {
-                try {
-                    StreamWriter sw = new StreamWriter(savefile.FileName);
-                    sw.Write(textBox1.Text);
-                    sw.Close();
-                    MessageBox.Show("Saved successfully." + Environment.NewLine + "File name: " + savefile.FileName, Program.msgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Text = "Notepad - " + savefile.FileName;
-                } catch (Exception ex) {
-                    Program.showError(ex.Message);
+            if (textBox1.Text.Length > 0) {
+                SaveFileDialog savefile = new SaveFileDialog {
+                    InitialDirectory = Path.Combine(Path.GetDirectoryName(Environment.GetFolderPath(Environment.SpecialFolder.Personal)), "Documents"),
+                    Title = "Save history as text file - " + Program.msgTitle,
+                    CheckFileExists = false,
+                    CheckPathExists = true,
+                    DefaultExt = "txt",
+                    Filter = "Text file|*.txt",
+                    FilterIndex = 1,
+                    RestoreDirectory = true
+                };
+                if (savefile.ShowDialog() == DialogResult.OK) {
+                    try {
+                        StreamWriter sw = new StreamWriter(savefile.FileName);
+                        sw.Write(textBox1.Text);
+                        sw.Close();
+                        Program.showMsg("Saved successfully." + Environment.NewLine + "File name: " + savefile.FileName);
+                        this.Text = "Notepad - " + savefile.FileName;
+                    } catch (Exception ex) {
+                        Program.showError(ex.Message, true);
+                    }
                 }
+            } else {
+                Program.showError("History is empty.");
             }
         }
 
         private void button4_Click(object sender, EventArgs e) {
-            Clipboard.SetText(textBox1.Text);
-            MessageBox.Show("All history was copied.", Program.msgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (textBox1.Text.Length > 0) {
+                try {
+                    Clipboard.SetText(textBox1.Text);
+                    Program.showMsg("All history was copied.");
+                } catch (Exception ex) {
+                    Program.showError(ex.Message, true);
+                }
+            } else {
+                Program.showError("History is empty.");
+            }
         }
     }
 }

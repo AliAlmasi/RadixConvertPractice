@@ -170,7 +170,7 @@ namespace RadixConvertPractice {
         private void answerLabel_Click(object sender, EventArgs e) {
             if (hasFirstGenerated) {
                 Clipboard.SetText(answerLabel.Text);
-                Program.showError("answer copied!");
+                Program.showMsg("answer copied!");
             } else Program.showError("nothing to copy. Generate a number first.");
         }
 
