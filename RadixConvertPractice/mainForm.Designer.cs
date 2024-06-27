@@ -1,5 +1,5 @@
 ﻿namespace RadixConvertPractice {
-    partial class Form1 {
+    partial class mainForm {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -24,7 +24,7 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainForm));
             this.button1 = new System.Windows.Forms.Button();
             this.baseList = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -221,14 +221,14 @@
             // 
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Black;
-            this.label5.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label5.Cursor = System.Windows.Forms.Cursors.Help;
             this.label5.Font = new System.Drawing.Font("Arial", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(16, 12);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(215, 23);
             this.label5.TabIndex = 13;
             this.label5.Text = "RadixConvertPractice";
-            this.label5.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FormMove);
+            this.label5.MouseDown += new System.Windows.Forms.MouseEventHandler(this.label5_MouseDown);
             // 
             // label6
             // 

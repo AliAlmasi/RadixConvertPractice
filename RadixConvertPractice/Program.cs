@@ -21,12 +21,13 @@ namespace RadixConvertPractice {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             if (Properties.Settings.Default.firstRun) {
-                string firstRunMsg = "Hello. Thank you for using RadixConvertPractice. We hope that this software will be useful for you in the practice of converting classical bases of numbers.\n\nThis is a free and open source software. You can read the source code of this software and be sure of its security and integrity.\n\nAlso, if you encounter a problem while using this software, be sure to inform the developer (by submitting an issue on GitHub) so that it can be fixed in the next versions of this software.";
+                string firstRunMsg = "Hello. Thank you for using RadixConvertPractice. We hope that this software will be useful for you in the practice of converting classical bases of numbers.\n\nAlso, if you encounter a problem while using this software, be sure to inform the developer (by submitting an issue on GitHub) so that it can be fixed in the next versions of this software.";
                 MessageBox.Show(firstRunMsg, msgTitle);
                 Properties.Settings.Default.firstRun = false;
                 Properties.Settings.Default.Save();
             }
-            Application.Run(new Form1());
+            Application.Run(new mainForm());
+            
         }
 
         public static void showError(string errorText = "Runtime error!\nInform the developer by creating an issue on GitHub.", bool issues = false) {
@@ -126,6 +127,16 @@ namespace RadixConvertPractice {
                 showError("please enter a valid number length.");
                 return "error";
             }
+        }
+
+        public static string convertRadix(string input, int fromBase, int toBase) {
+            try {
+                return Convert.ToString(Convert.ToInt32(input, fromBase), toBase);
+            } catch (Exception ex) {
+                showError("Error while converting base of generated number:\n\n" + ex.Message);
+                return "error while converting";
+            }
+            
         }
     }
 }

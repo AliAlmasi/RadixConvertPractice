@@ -9,9 +9,9 @@ using System.Windows.Forms;
 using System.IO;
 
 namespace RadixConvertPractice {
-    public partial class Form2: Form {
+    public partial class historyForm: Form {
         public static string history = "";
-        public Form2() {
+        public historyForm() {
             InitializeComponent();
         }
 
